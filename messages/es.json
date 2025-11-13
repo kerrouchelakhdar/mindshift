@@ -1,0 +1,34 @@
+{
+  "Navbar": {
+    "searchPlaceholder": "Buscar artículos…",
+    "toggleTheme": "Cambiar tema",
+    "light": "Claro",
+    "dark": "Oscuro"
+  },
+  "Footer": {
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos y Condiciones"
+  },
+  "Home": {
+    "title": "MindShift — Nuevas perspectivas tecnológicas",
+    "description": "Lee lo último sobre IA, diseño, rendimiento y más.",
+    "latest": "Artículos Recientes",
+    "searchPlaceholder": "Buscar artículos...",
+    "noResults": "No se encontraron artículos"
+  },
+  "Categories": {
+    "all": "Todo",
+    "AI": "IA",
+    "Tools": "Herramientas",
+    "Trends": "Tendencias",
+    "Tutorials": "Tutoriales",
+    "Reviews": "Reseñas",
+    "News": "Noticias"
+  },
+  "Article": {
+    "by": "Por",
+    "commentsComingSoon": "Comentarios próximamente"
+  }
+}

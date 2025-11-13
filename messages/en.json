@@ -1,0 +1,34 @@
+{
+  "Navbar": {
+    "searchPlaceholder": "Search articles…",
+    "toggleTheme": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "Footer": {
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "Home": {
+    "title": "MindShift — Fresh tech perspectives",
+    "description": "Read the latest on AI, design, performance, and more.",
+    "latest": "Latest Articles",
+    "searchPlaceholder": "Search for articles...",
+    "noResults": "No articles found"
+  },
+  "Categories": {
+    "all": "All",
+    "AI": "AI",
+    "Tools": "Tools",
+    "Trends": "Trends",
+    "Tutorials": "Tutorials",
+    "Reviews": "Reviews",
+    "News": "News"
+  },
+  "Article": {
+    "by": "By",
+    "commentsComingSoon": "Comments coming soon"
+  }
+}
