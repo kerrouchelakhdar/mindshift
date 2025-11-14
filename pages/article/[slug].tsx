@@ -59,9 +59,10 @@ export default function ArticlePage({ article }: { article: Article }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const slugs = await fetchArticleSlugs()
+  // Return empty paths to avoid build-time fetch failures
+  // All pages will be generated on-demand with ISR (fallback: 'blocking')
   return {
-    paths: slugs.map((slug) => ({ params: { slug } })),
+    paths: [],
     fallback: 'blocking',
   }
 }
