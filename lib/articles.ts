@@ -95,7 +95,7 @@ export async function fetchArticles(): Promise<Article[]> {
       const { data, error } = await supabase
         .from('articles')
         .select('id, slug, title, description, category, image_url, content, author, published_at')
-        .limit(5)
+        .order('published_date', { ascending: false })
 
       if (error) throw error
       if (data && data.length > 0) return data as Article[]
@@ -142,7 +142,6 @@ export async function fetchArticleSlugs(): Promise<string[]> {
       const { data, error } = await supabase
         .from('articles')
         .select('slug')
-        .limit(5)
 
       if (error) throw error
       if (data && data.length > 0) return data.map((d) => d.slug!)
