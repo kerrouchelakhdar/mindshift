@@ -92,20 +92,29 @@ export async function fetchArticles(): Promise<Article[]> {
       process.env.NEXT_PUBLIC_SUPABASE_URL &&
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
     ) {
+      console.log('[fetchArticles] Attempting Supabase fetch...')
       const { data, error } = await supabase
         .from('articles')
         .select('id, slug, title, description, category, image_url, content, author, published_at')
         .order('published_date', { ascending: false })
 
-      if (error) throw error
-      if (data && data.length > 0) return data as Article[]
+      if (error) {
+        console.error('[fetchArticles] Supabase error:', error)
+        throw error
+      }
+      if (data && data.length > 0) {
+        console.log(`[fetchArticles] ✅ Fetched ${data.length} real articles from Supabase`)
+        return data as Article[]
+      }
+      console.warn('[fetchArticles] Supabase returned empty data')
+    } else {
+      console.warn('[fetchArticles] Missing env vars, using mock articles')
     }
   } catch (e) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.warn('[fetchArticles] Falling back to mock articles. Reason:', e)
-    }
+    console.error('[fetchArticles] Exception caught, falling back to mock articles:', e)
   }
 
+  console.log('[fetchArticles] ⚠️ Returning mock articles')
   return mockArticles
 }
 
