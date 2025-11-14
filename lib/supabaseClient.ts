@@ -4,14 +4,22 @@
 
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string | undefined
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string | undefined
+
+// DEBUG: Log env vars at build/runtime (safe: only logs first/last chars)
+console.log('[DEBUG][supabaseClient] ENV:', {
+  NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL ? `${process.env.NEXT_PUBLIC_SUPABASE_URL.slice(0, 15)}...${process.env.NEXT_PUBLIC_SUPABASE_URL.slice(-8)}` : undefined,
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? `${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY.slice(0, 8)}...${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY.slice(-6)}` : undefined,
+  NODE_ENV: process.env.NODE_ENV
+});
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string | undefined;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string | undefined;
 
 if (!supabaseUrl || !supabaseAnonKey) {
   // We don't throw here to allow the app to run locally with mock data.
   // Logging only in development to avoid leaking info.
   if (process.env.NODE_ENV !== 'production') {
-    console.warn('[supabaseClient] Missing Supabase env vars. Using mock data where applicable.')
+    console.warn('[supabaseClient] Missing Supabase env vars. Using mock data where applicable.');
   }
 }
 
