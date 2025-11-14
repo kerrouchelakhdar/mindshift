@@ -58,25 +58,15 @@ export default function ArticlePage({ article }: { article: Article }) {
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  // Return empty paths to avoid build-time fetch failures
-  // All pages will be generated on-demand with ISR (fallback: 'blocking')
-  return {
-    paths: [],
-    fallback: 'blocking',
-  }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const slug = params?.slug as string
+export const getServerSideProps = async ({ params }: { params: { slug: string } }) => {
+  const slug = params.slug
   const article = await fetchArticleBySlug(slug)
 
   if (!article) {
-    return { notFound: true, revalidate: 60 }
+    return { notFound: true }
   }
 
   return {
     props: { article },
-    revalidate: 60,
   }
 }

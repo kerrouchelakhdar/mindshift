@@ -93,12 +93,12 @@ export default function Home({ articles }: { articles: Article[] }) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  // Fetch articles with ISR - will use mock data on build failure, real data on revalidation
+export const getServerSideProps = async () => {
+  // Use SSR instead of SSG to fetch fresh data on each request
+  // This bypasses build-time fetch failures
   const articles = await fetchArticles()
   return {
     props: { articles },
-    revalidate: 10, // Revalidate every 10 seconds for faster updates
   }
 }
  
